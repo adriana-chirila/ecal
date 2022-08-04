@@ -75,6 +75,9 @@ endif()
 # command line build options
 # use it that way cmake .. -DBUILD_APPS=ON -DBUILD_SAMPLES=ON
 # --------------------------------------------------------
+option(ECAL_JOIN_MULTICAST_TWICE               "Specific Multicast Network Bug Workaround"                        OFF)
+option(ECAL_NPCAP_SUPPORT                      "Enable the eCAL Npcap Receiver (i.e. the Win10 performance fix)"  OFF)
+
 # Set option regarding third party library builds
 option(ECAL_THIRDPARTY_BUILD_CMAKE_FUNCTIONS   "Build CMakeFunctions with eCAL"                                    ON)
 option(ECAL_THIRDPARTY_BUILD_TCP_PUBSUB        "Build tcp_pubsub library with eCAL"                                ON)
@@ -83,7 +86,7 @@ option(ECAL_THIRDPARTY_BUILD_GTEST             "Build gtest with eCAL"          
 if(WIN32)
   option(ECAL_THIRDPARTY_BUILD_PROTOBUF        "Build protobuf with eCAL"                                          ON)
 else()
-  option(ECAL_THIRDPARTY_BUILD_PROTOBUF        "Build protobuf with eCAL"                                          OFF)
+  option(ECAL_THIRDPARTY_BUILD_PROTOBUF        "Build protobuf with eCAL"                                         OFF)
 endif()
 
 
@@ -255,9 +258,11 @@ add_subdirectory(ecal/core)
 # --------------------------------------------------------
 # custom libs
 # --------------------------------------------------------
-#add_subdirectory(lib/ThreadingUtils)
-add_subdirectory(lib/CustomTclap)
 add_subdirectory(lib/ecal_utils)
+
+if(ECAL_NPCAP_SUPPORT)
+  add_subdirectory(lib/Udpcap)
+endif()
 
 # unit tests
 # --------------------------------------------------------
