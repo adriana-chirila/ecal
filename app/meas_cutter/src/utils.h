@@ -150,7 +150,7 @@ namespace eCALMeasCutterUtils
   };
 
   static std::unordered_map<std::string, ScaleType> const scale_type_table = { {"null", ScaleType::null}, {"s", ScaleType::seconds}, {"seconds", ScaleType::seconds}, {"second", ScaleType::seconds },
-                                                                             {"µs", ScaleType::microseconds}, {"us", ScaleType::microseconds}, {"microseconds", ScaleType::microseconds},  {"microsecond", ScaleType::microseconds},
+                                                                             {"us", ScaleType::microseconds}, {"microseconds", ScaleType::microseconds},  {"microsecond", ScaleType::microseconds},
                                                                              {"ms", ScaleType::milliseconds}, {"millisecond", ScaleType::milliseconds}, {"milliseconds", ScaleType::milliseconds} };
 
   static std::unordered_map<std::string, BaseType> const base_type_table = { {"null", BaseType::null}, {"start", BaseType::start}, {"end",BaseType::end}, {"absolute", BaseType::absolute} };

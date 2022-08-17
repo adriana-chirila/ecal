@@ -21,6 +21,7 @@
 #include <iostream>
 #include <algorithm>
 #include <regex>
+#include <cctype>
 
 #include <ecal_utils/filesystem.h>
 #include <ecalhdf5/eh5_meas.h>

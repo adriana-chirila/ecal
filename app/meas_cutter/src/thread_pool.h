@@ -25,6 +25,7 @@
 #include <atomic>
 #include <condition_variable>
 
+#include "utils.h"
 #include "measurement_worker.h"
 
 class ThreadPool
@@ -47,7 +48,6 @@ public:
 
 private:
   int                                                _maximum_worker_number;
-
-  std::vector<MeasurementWorker*>                    _worker_list;
   friend class MeasurementWorker;
+  std::vector<MeasurementWorker*>                    _worker_list;
 };

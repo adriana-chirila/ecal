@@ -20,6 +20,7 @@
 #pragma once
 #include <mutex>
 #include <thread>
+#include <atomic>
 
 #include "measurement_converter.h"
 #include "utils.h"
@@ -40,8 +41,8 @@ private:
   std::thread*                        _current_thread;
   ThreadPool&                         _thread_pool;
   std::mutex&                         _buffer_mutex;
-  std::atomic_bool                    _is_busy;
-  std::atomic_bool                    _is_initialized;
+  std::atomic<bool>                   _is_busy;
+  std::atomic<bool>                   _is_initialized;
 
   eCALMeasCutterUtils::MeasurementJob _current_job;
   MeasurementConverter                _measurement_converter;

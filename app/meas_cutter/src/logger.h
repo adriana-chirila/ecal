@@ -19,6 +19,8 @@
 
 #include <fstream>
 #include <iostream>
+#include <istream>
+#include <string>
 
 class Logger 
 {
