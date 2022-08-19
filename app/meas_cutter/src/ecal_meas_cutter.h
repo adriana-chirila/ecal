@@ -38,7 +38,6 @@ class eCALMeasCutter
 {
 public:
   eCALMeasCutter(std::vector<std::string>& arguments);
-  ~eCALMeasCutter() {};
   int run();
 
 private:
