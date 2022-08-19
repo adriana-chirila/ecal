@@ -241,7 +241,7 @@ int eCALMeasCutter::run()
 
   _thread_pool.Start();
 
-  for (auto input_output_pair : _input_output_pairs)
+  for (const auto& input_output_pair : _input_output_pairs)
   {
     id++;
     eCALMeasCutterUtils::MeasurementJob  measurement_job;
