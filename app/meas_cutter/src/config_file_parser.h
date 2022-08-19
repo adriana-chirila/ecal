@@ -30,7 +30,6 @@ class ConfigFileParser
 {
 public:
   ConfigFileParser(const std::string& configuration_file_path);
-  ~ConfigFileParser() = default;
 
   bool isConfigFileValid();
   void parseTrimOperations(eCALMeasCutterUtils::TrimOperation& trim_operation);
