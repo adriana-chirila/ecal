@@ -28,7 +28,6 @@ class MeasurementConverter
 {
 public:
   MeasurementConverter();
-  ~MeasurementConverter() = default;
 
   void setCurrentJob(eCALMeasCutterUtils::MeasurementJob& current_job);
   bool isConfigurationValid();
