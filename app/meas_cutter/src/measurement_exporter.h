@@ -30,7 +30,6 @@ class MeasurementExporter
 {
 public:
   MeasurementExporter();
-  ~MeasurementExporter();
 
   void        setPath(const std::string& path, const std::string& base_name, const size_t& max_size_per_file);
   void        createChannel(const std::string& channel_name, const eCALMeasCutterUtils::ChannelInfo& channel_info);
