@@ -105,7 +105,7 @@ void MeasurementImporter::getData(eCALMeasCutterUtils::Timestamp timestamp, eCAL
 
   auto data_id = entry_info.ID;
 
-  size_t size;
+  size_t size = 0;
   _reader->GetEntryDataSize(data_id, size);
 
   std::unique_ptr<char[]> buffer =  std::make_unique<char[]>(size);
