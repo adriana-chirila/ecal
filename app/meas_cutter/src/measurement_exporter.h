@@ -48,7 +48,7 @@ class ExporterException : public std::exception
 public:
   ExporterException(const std::string& message) : message_(message) {}
 
-  virtual const char* what() const throw() { return message_.c_str(); }
+  override const char* what() const throw() { return message_.c_str(); }
 private:
   std::string message_;
 };
