@@ -313,7 +313,7 @@ namespace eCALMeasCutterUtils
     uint64_t sender_id;
     uint64_t sender_clock;
 
-    char __union_size[64];
+     std::array<char,64> __union_size;
   };
 
   typedef std::unordered_map<MetaDatumKey, MetaDatumValue, MetaDatumHash> MetaData;
