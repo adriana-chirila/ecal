@@ -90,7 +90,7 @@ bool MeasurementConverter::isConfigurationValid()
   }
 
   // check if channels regex for include/exclude list exist in the measurement
-  for (auto channel_regex : _current_job.channels_to_manipulate_regex)
+  for (const auto& channel_regex : _current_job.channels_to_manipulate_regex)
   {
     auto channels_matches = _importer.getChannelNamesForRegex(std::regex(channel_regex));
     if (channels_matches.empty())
@@ -105,7 +105,7 @@ bool MeasurementConverter::isConfigurationValid()
 
   auto at_least_one_channel_in_measurement = false;
   // check if channels for include/exclude list exist in the measurement
-  for (auto channel : _current_job.channels_to_manipulate)
+  for (const auto& channel : _current_job.channels_to_manipulate)
   {
     if (!_importer.hasChannel(channel))
     {
@@ -274,7 +274,7 @@ bool MeasurementConverter::convert()
   auto file_status = EcalUtils::Filesystem::FileStatus(input_path, EcalUtils::Filesystem::OsStyle::Current);
   if (file_status.GetType() == EcalUtils::Filesystem::Type::Dir)
   {
-    for (auto file : EcalUtils::Filesystem::DirContent(_importer.getLoadedPath()))
+    for (const auto& file : EcalUtils::Filesystem::DirContent(_importer.getLoadedPath()))
     {
       //copy .ecalmeas file
       if (eCALMeasCutterUtils::GetExtension(file.first) == "ecalmeas")
@@ -296,15 +296,18 @@ bool MeasurementConverter::convert()
         if (EcalUtils::Filesystem::MkDir(doc_output_folder_path))
         {
           // iterate through doc folder and copy everything
-          for (auto doc_file : EcalUtils::Filesystem::DirContent(doc_input_folder_path))
+          for (const auto& doc_file : EcalUtils::Filesystem::DirContent(doc_input_folder_path))
           {
-            auto source      = doc_input_folder_path + EcalUtils::Filesystem::NativeSeparator(EcalUtils::Filesystem::OsStyle::Current) + doc_file.first;
-            auto destination = doc_output_folder_path + EcalUtils::Filesystem::NativeSeparator(EcalUtils::Filesystem::OsStyle::Current) + doc_file.first;
+            if (doc_file.second.GetType() == EcalUtils::Filesystem::Type::RegularFile)
+            {
+              auto source = doc_input_folder_path + EcalUtils::Filesystem::NativeSeparator(EcalUtils::Filesystem::OsStyle::Current) + doc_file.first;
+              auto destination = doc_output_folder_path + EcalUtils::Filesystem::NativeSeparator(EcalUtils::Filesystem::OsStyle::Current) + doc_file.first;
 
-            if (EcalUtils::Filesystem::CopyFile(source, destination, EcalUtils::Filesystem::OsStyle::Current))
-              eCALMeasCutterUtils::printOutput("Finished copying file \"" + doc_file.first + "\" to \"" + doc_output_folder_path + "\".", _current_job.id);
-            else
-              eCALMeasCutterUtils::printError("Could not copy file \"" + doc_file.first + "\" to \"" + doc_output_folder_path + "\".", _current_job.id);
+              if (EcalUtils::Filesystem::CopyFile(source, destination, EcalUtils::Filesystem::OsStyle::Current))
+                eCALMeasCutterUtils::printOutput("Finished copying file \"" + doc_file.first + "\" to \"" + doc_output_folder_path + "\".", _current_job.id);
+              else
+                eCALMeasCutterUtils::printError("Could not copy file \"" + doc_file.first + "\" to \"" + doc_output_folder_path + "\".", _current_job.id);
+            }
           }
         }
       }

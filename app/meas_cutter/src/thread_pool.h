@@ -33,6 +33,10 @@ class ThreadPool
 public:
   ThreadPool(int count_threads = std::thread::hardware_concurrency());
   ~ThreadPool();
+  ThreadPool(ThreadPool const&) = delete;
+  ThreadPool& operator =(ThreadPool const&) = delete;
+  ThreadPool(ThreadPool&&) = delete;
+  ThreadPool& operator=(ThreadPool&&) = delete;
 
   void Enque(eCALMeasCutterUtils::MeasurementJob& measurement_job);
   void Start();
@@ -49,5 +53,5 @@ public:
 private:
   int                                                _maximum_worker_number;
   friend class MeasurementWorker;
-  std::vector<MeasurementWorker*>                    _worker_list;
+  std::vector<std::unique_ptr<MeasurementWorker>>    _worker_list;
 };

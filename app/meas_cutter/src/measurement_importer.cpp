@@ -105,13 +105,13 @@ void MeasurementImporter::getData(eCALMeasCutterUtils::Timestamp timestamp, eCAL
 
   auto data_id = entry_info.ID;
 
-  size_t size;
+  size_t size = 0;
   _reader->GetEntryDataSize(data_id, size);
 
-  std::unique_ptr<char[]> buffer =  std::make_unique<char[]>(size);
-  _reader->GetEntryData(data_id, buffer.get());
+   std::vector<char> buffer(size);
+  _reader->GetEntryData(data_id, &buffer[0]);
 
-  data.assign(buffer.get(), size);
+  data.assign(buffer.data(), size);
 
   meta_data.clear();
   meta_data[eCALMeasCutterUtils::MetaDatumKey::RECEIVER_TIMESTAMP].receiver_timestamp = entry_info.RcvTimestamp;
@@ -141,7 +141,7 @@ std::pair<eCALMeasCutterUtils::Timestamp, eCALMeasCutterUtils::Timestamp> Measur
 std::list<std::string> MeasurementImporter::getChannelNamesForRegex(const std::regex& regex)
 {
   std::list<std::string> channel_names_matches;
-  for (auto channel_name : _channel_names)
+  for (const auto& channel_name : _channel_names)
   {
     if (std::regex_match(channel_name, regex))
     {
@@ -189,7 +189,7 @@ std::string MeasurementImporter::getLoadedPath()
 
 bool MeasurementImporter::areChannelsLeftToInclude(const std::list<std::string>& channels_to_exclude)
 {
-  for (auto channel_name : _channel_names)
+  for (const auto& channel_name : _channel_names)
   {
     // if we have at least a channel that is not excluded
     if (std::find(channels_to_exclude.begin(), channels_to_exclude.end(), channel_name) == channels_to_exclude.end())

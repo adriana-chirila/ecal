@@ -50,7 +50,7 @@ target_include_directories(${PROJECT_NAME}
 
 target_link_libraries(${PROJECT_NAME}   yaml-cpp
                                         tclap::tclap
-                                        eCAL::utils
+                                        eCAL::ecal-utils
                                         eCAL::hdf5
                                         Threads::Threads)
 

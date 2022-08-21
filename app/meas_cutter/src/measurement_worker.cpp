@@ -27,7 +27,7 @@ MeasurementWorker::MeasurementWorker(ThreadPool& thread_pool, std::mutex& mutex)
   _is_initialized(false),
   _current_job(eCALMeasCutterUtils::MeasurementJob())
 {
-  _current_thread = new std::thread(&MeasurementWorker::doWork, this);
+  _current_thread = std::make_unique<std::thread>(&MeasurementWorker::doWork, this);
 }
 
 void MeasurementWorker::join()
