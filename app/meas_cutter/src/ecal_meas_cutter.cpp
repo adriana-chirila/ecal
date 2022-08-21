@@ -35,7 +35,7 @@ void eCALMeasCutter::parseCmdLine(std::vector<std::string>& arguments)
 
   TCLAP::ValueArg<std::string> config_file_path_arg("c", "config", "Path to the configuration file that contains operations to be done on the measurements.", true, "", "string", cmd);
   TCLAP::MultiArg<std::string> input_measurement_arg("i", "input", "Path of the input measurement (Tip: one input measurement has to have a corresponding output).", true, "string", cmd);
-  TCLAP::MultiArg<std::string> output_measurement_arg("o", "output", "Path of the output measurement(Tip: one input measurement has to have a corresponding output).", true, "string", cmd);
+  TCLAP::MultiArg<std::string> output_measurement_arg("o", "output", "Path of the output measurement (Tip: one input measurement has to have a corresponding output).", true, "string", cmd);
   TCLAP::SwitchArg quiet_arg("q", "quiet", "Disables logging to console output.", cmd, false);
   TCLAP::SwitchArg save_log_arg("s", "save_log", "Enables log file creation in a folder called \"log\" next to the executable.", cmd, false);
 
