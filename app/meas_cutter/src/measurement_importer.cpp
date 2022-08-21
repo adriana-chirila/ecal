@@ -108,10 +108,10 @@ void MeasurementImporter::getData(eCALMeasCutterUtils::Timestamp timestamp, eCAL
   size_t size = 0;
   _reader->GetEntryDataSize(data_id, size);
 
-  std::unique_ptr<char[]> buffer =  std::make_unique<char[]>(size);
-  _reader->GetEntryData(data_id, buffer.get());
+   std::vector<char> buffer(size);
+  _reader->GetEntryData(data_id, &buffer[0]);
 
-  data.assign(buffer.get(), size);
+  data.assign(buffer.data(), size);
 
   meta_data.clear();
   meta_data[eCALMeasCutterUtils::MetaDatumKey::RECEIVER_TIMESTAMP].receiver_timestamp = entry_info.RcvTimestamp;
