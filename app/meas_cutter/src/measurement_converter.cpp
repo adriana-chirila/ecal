@@ -298,13 +298,16 @@ bool MeasurementConverter::convert()
           // iterate through doc folder and copy everything
           for (const auto& doc_file : EcalUtils::Filesystem::DirContent(doc_input_folder_path))
           {
-            auto source      = doc_input_folder_path + EcalUtils::Filesystem::NativeSeparator(EcalUtils::Filesystem::OsStyle::Current) + doc_file.first;
-            auto destination = doc_output_folder_path + EcalUtils::Filesystem::NativeSeparator(EcalUtils::Filesystem::OsStyle::Current) + doc_file.first;
+            if (doc_file.second.GetType() == EcalUtils::Filesystem::Type::RegularFile)
+            {
+              auto source = doc_input_folder_path + EcalUtils::Filesystem::NativeSeparator(EcalUtils::Filesystem::OsStyle::Current) + doc_file.first;
+              auto destination = doc_output_folder_path + EcalUtils::Filesystem::NativeSeparator(EcalUtils::Filesystem::OsStyle::Current) + doc_file.first;
 
-            if (EcalUtils::Filesystem::CopyFile(source, destination, EcalUtils::Filesystem::OsStyle::Current))
-              eCALMeasCutterUtils::printOutput("Finished copying file \"" + doc_file.first + "\" to \"" + doc_output_folder_path + "\".", _current_job.id);
-            else
-              eCALMeasCutterUtils::printError("Could not copy file \"" + doc_file.first + "\" to \"" + doc_output_folder_path + "\".", _current_job.id);
+              if (EcalUtils::Filesystem::CopyFile(source, destination, EcalUtils::Filesystem::OsStyle::Current))
+                eCALMeasCutterUtils::printOutput("Finished copying file \"" + doc_file.first + "\" to \"" + doc_output_folder_path + "\".", _current_job.id);
+              else
+                eCALMeasCutterUtils::printError("Could not copy file \"" + doc_file.first + "\" to \"" + doc_output_folder_path + "\".", _current_job.id);
+            }
           }
         }
       }
