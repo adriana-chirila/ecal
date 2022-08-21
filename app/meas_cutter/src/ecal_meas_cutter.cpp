@@ -39,7 +39,6 @@ void eCALMeasCutter::parseCmdLine(std::vector<std::string>& arguments)
   TCLAP::SwitchArg quiet_arg("q", "quiet", "Disables logging to console output.", cmd, false);
   TCLAP::SwitchArg save_log_arg("s", "save_log", "Enables log file creation in a folder called \"log\" next to the executable.", cmd, false);
 
-  cmd.setExceptionHandling(false);
   try
   {
     cmd.parse(arguments);
