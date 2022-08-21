@@ -38,7 +38,7 @@ public:
 
 private:
   void doWork();
-  std::thread*                        _current_thread;
+  std::unique_ptr<std::thread>        _current_thread;
   ThreadPool&                         _thread_pool;
   std::mutex&                         _buffer_mutex;
   std::atomic<bool>                   _is_busy;
