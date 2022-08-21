@@ -41,8 +41,8 @@ void ThreadPool::Start()
 {
   for (int i = 0; i < _maximum_worker_number; i++)
   {
-    MeasurementWorker* worker = new MeasurementWorker(*this,_mutex_job);
-    _worker_list.push_back(worker);
+    auto worker = std::make_unique<MeasurementWorker>(*this,_mutex_job);
+    _worker_list.push_back(std::move(worker));
   }
   while (!areThreadsInitialized())
   {
@@ -58,11 +58,10 @@ void ThreadPool::Stop()
   _buffer_cv.notify_all();
 
   // Join all threads
-  for (MeasurementWorker* worker : _worker_list)
+  for (auto const& worker : _worker_list)
   {
     worker->abort();
     worker->join();
-    delete worker;
   }
 
   _worker_list.clear();
@@ -70,7 +69,7 @@ void ThreadPool::Stop()
 
 bool ThreadPool::areThreadsBusy()
 {
-  for (auto worker : _worker_list)
+ for (auto const& worker : _worker_list)
   {
     if (worker->isThreadBusy())
       return true;
@@ -80,7 +79,7 @@ bool ThreadPool::areThreadsBusy()
 
 bool ThreadPool::areThreadsInitialized()
 {
-  for (auto worker : _worker_list)
+  for (auto const& worker : _worker_list)
   {
     if (!worker->isThreadInitialized())
       return false;
