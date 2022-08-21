@@ -49,5 +49,5 @@ public:
 private:
   int                                                _maximum_worker_number;
   friend class MeasurementWorker;
-  std::vector<MeasurementWorker*>                    _worker_list;
+  std::vector<std::unique_ptr<MeasurementWorker>>    _worker_list;
 };
