@@ -34,6 +34,10 @@ class MeasurementImporter
 public:
   MeasurementImporter();
   ~MeasurementImporter();
+  MeasurementImporter(MeasurementImporter const&) = delete;
+  MeasurementImporter& operator =(MeasurementImporter const&) = delete;
+  MeasurementImporter(MeasurementImporter&&) = delete;
+  MeasurementImporter& operator=(MeasurementImporter&&) = delete;
   void                                                                                    setPath(const std::string& path);
   eCALMeasCutterUtils::ChannelNameSet                                                     getChannelNames() const;
   bool                                                                                    hasChannel(const std::string& channel_name) const;
