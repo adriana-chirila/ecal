@@ -40,10 +40,10 @@ namespace eCALMeasCutterUtils
   typedef long long Timestamp;
   typedef std::set<Timestamp> TimestampSet;
 
-  constexpr char kDefaultHdf5BaseName[]    = "measurement";
+  constexpr char* kDefaultHdf5BaseName     = "measurement";
   constexpr int  kDefaultHdf5FileSize      = 512;
-  constexpr char kDefaultFolderOutput[]    = "MEASUREMENT_CONVERTER";
-  constexpr char kDefaultLogOutputFolder[] = "log";
+  constexpr char* kDefaultFolderOutput     = "MEASUREMENT_CONVERTER";
+  constexpr char* kDefaultLogOutputFolder  = "log";
   
   extern bool quiet;
   extern bool save_log;
