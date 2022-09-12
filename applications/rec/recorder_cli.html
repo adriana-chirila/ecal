@@ -455,6 +455,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../sys/sys_client.html"> eCAL Sys Client</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../meas_cutter/meas_cutter.html">eCAL Measurement Cutter</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../faq.html">FAQ</a></li>
@@ -469,8 +470,10 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../_download_archive/download_archive.html">eCAL Download Archive</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../_download_archive/download_archive_ecal_5_10_2.html">eCAL 5.10.2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../_download_archive/download_archive_ecal_5_10_1.html">eCAL 5.10.1</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../_download_archive/download_archive_ecal_5_10_0.html">eCAL 5.10.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../_download_archive/download_archive_ecal_5_9_10.html">eCAL 5.9.10</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../_download_archive/download_archive_ecal_5_9_8.html">eCAL 5.9.8</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../_download_archive/download_archive_ecal_5_9_7.html">eCAL 5.9.7</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../_download_archive/download_archive_ecal_5_9_6.html">eCAL 5.9.6</a></li>
@@ -674,6 +677,7 @@ When in interactive mode, eCAL Rec CLI will keep running and start an interactiv
              &lt;Seconds&gt;] [--blacklist &lt;List&gt;] [--whitelist &lt;List&gt;] [-d
              &lt;Path&gt;] [-n &lt;Directory&gt;] [--max-file-size &lt;megabytes&gt;]
              [--description &lt;String&gt;] [--ftp-server &lt;FTP_Server&gt;]
+             [--enable-one-file-per-topic &lt;yes/no&gt;]
              [--delete-after-upload &lt;yes/no&gt;] [-i]
              [--interactive-dont-exit] [--] [--version] [-h]
 
@@ -804,6 +808,11 @@ Where:
      set. If a configuration file is being loaded, this will override the
      setting from the config. Not available in remote-control mode.
 
+   --enable-one-file-per-topic &lt;yes/no&gt;
+     Whether to separate each topic in HDF5 file. This helps faster file
+     transfer and less network congestion in case of interest of specific
+     topics only.
+
    --ftp-server &lt;FTP_Server&gt;
      The server where to upload to when uploading a measurement. Use
      &quot;internal&quot; for the integrated FTP Server. When using an external FTP
@@ -868,6 +877,7 @@ setconfig [--set-client &lt;Hostname:Hosts,To,Record&gt;] ...
   | [--meas-name &lt;String&gt;] 
   | [--max-file-size &lt;Megabytes&gt;]
   | [--description &lt;String&gt;]
+  | [--enable-one-file-per-topic &lt;yes/no&gt;] 
   | [--ftp-server &lt;FTP_Server&gt;]
   | [--delete-after-upload &lt;yes/no&gt;]
   | [--enable-built-in-client &lt;yes/no&gt;]
