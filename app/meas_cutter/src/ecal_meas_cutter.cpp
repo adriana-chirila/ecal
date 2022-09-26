@@ -19,9 +19,9 @@
 
 #include "ecal_meas_cutter.h"
 
-bool eCALMeasCutterUtils::quiet                     = false;
-bool eCALMeasCutterUtils::save_log                  = false;
-bool eCALMeasCutterUtils::enable_one_file_per_topic = false;
+bool eCALMeasCutterUtils::quiet                     ;
+bool eCALMeasCutterUtils::save_log                  ;
+bool eCALMeasCutterUtils::enable_one_file_per_topic ;
 
 eCALMeasCutter::eCALMeasCutter(std::vector<std::string>& arguments):
   _max_size_per_file(0),
