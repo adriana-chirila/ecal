@@ -25,6 +25,8 @@ Namespaces
 
 - :ref:`namespace_eCAL__Logging`
 
+- :ref:`namespace_eCAL__measurement`
+
 - :ref:`namespace_eCAL__Monitoring`
 
 - :ref:`namespace_eCAL__pb`
@@ -48,6 +50,8 @@ Classes
 
 - :ref:`exhale_struct_structeCAL_1_1SClientEventCallbackData`
 
+- :ref:`exhale_struct_structeCAL_1_1SDataTypeInformation`
+
 - :ref:`exhale_struct_structeCAL_1_1SEventHandle`
 
 - :ref:`exhale_struct_structeCAL_1_1SPubEventCallbackData`
@@ -58,13 +62,19 @@ Classes
 
 - :ref:`exhale_struct_structeCAL_1_1SServiceAttr`
 
+- :ref:`exhale_struct_structeCAL_1_1SServiceMethodInformation`
+
 - :ref:`exhale_struct_structeCAL_1_1SServiceResponse`
 
 - :ref:`exhale_struct_structeCAL_1_1SSubEventCallbackData`
 
+- :ref:`exhale_struct_structeCAL_1_1STopicInformation`
+
 - :ref:`exhale_class_classeCAL_1_1CMsgPublisher`
 
 - :ref:`exhale_class_classeCAL_1_1CMsgSubscriber`
+
+- :ref:`exhale_class_classeCAL_1_1CPayloadWriter`
 
 - :ref:`exhale_class_classeCAL_1_1CPublisher`
 
@@ -89,9 +99,9 @@ Functions
 
 - :ref:`exhale_function_ecal__core_8h_1aaf5f98fd50238b9b05a20ad01427fafe`
 
-- :ref:`exhale_function_ecal__core_8h_1ad544729d963328cb79722c7280883719`
+- :ref:`exhale_function_ecal__core_8h_1ac52f8cc16ece6d66783726f78695ff87`
 
-- :ref:`exhale_function_ecal__core_8h_1a5f896560f908096e5591785cc00a08d1`
+- :ref:`exhale_function_ecal__core_8h_1a714f5511a81c28caa345b820bad16bf1`
 
 - :ref:`exhale_function_ecal__event_8h_1a6f89da9c1465814557bb85d4146bde0a`
 

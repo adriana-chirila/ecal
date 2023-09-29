@@ -1,3 +1,7 @@
+:orphan:
+
+.. _download_archive_ecal_v5_9_10:
+
 ====================
 eCAL 5.9.10
 ====================
@@ -11,7 +15,7 @@ Changelog
 =========
 
 .. literalinclude:: changelog_ecal_5_9_10.txt
-   :language: txt
+   :language: text
 
 Downloads
 =========
